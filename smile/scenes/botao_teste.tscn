@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://sprites/btn/area_atk.png" type="Texture" id=1]
+[ext_resource path="res://sprites/btn/pressed_atk.png" type="Texture" id=2]
+[ext_resource path="res://sprites/btn/contorno_btn.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="GDScript" id=2]
+
+resource/name = "w_btn"
+script/source = "extends Area2D
+
+#Ex: caso area.queue_free inimigo some/caso queue_free botao some
+func _on_btn_w_area_enter( area ):
+	if area.is_in_group(game.GRUPO_INIMIGO):
+		area.add_to_group(game.NA_MIRA)
+		get_node(\"w_btn\").show()
+	
+func _on_btn_w_area_exit( area ):
+	get_node(\"w_btn\").hide()
+	if area.is_in_group(game.GRUPO_INIMIGO):
+		area.remove_from_group(game.NA_MIRA)"
+
+[node name="btn_w" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 4.33851, 0, 0, 4.34415, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = SubResource( 2 )
+
+[node name="w_btn" type="TextureButton" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -43.0
+margin/top = -43.0
+margin/right = 44.0
+margin/bottom = 44.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 1 )
+textures/pressed = ExtResource( 2 )
+textures/hover = ExtResource( 3 )
+textures/disabled = ExtResource( 3 )
+textures/focused = ExtResource( 3 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/scale = Vector2( 4.33851, 4.34415 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="area_enter" from="." to="." method="_on_btn_w_area_enter"]
+
+[connection signal="area_exit" from="." to="." method="_on_btn_w_area_exit"]
+
+

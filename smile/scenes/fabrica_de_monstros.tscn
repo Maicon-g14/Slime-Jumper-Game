@@ -1,0 +1,330 @@
+[gd_scene load_steps=22 format=1]
+
+[ext_resource path="res://scripts/fabrica_de_monstros.gd" type="Script" id=1]
+[ext_resource path="res://scripts/monstros.gd" type="Script" id=2]
+[ext_resource path="res://sprites/inimigos/rato.png" type="Texture" id=3]
+[ext_resource path="res://sprites/inimigos/rato_2.png" type="Texture" id=4]
+[ext_resource path="res://sprites/inimigos/resto.png" type="Texture" id=5]
+[ext_resource path="res://scenes/monst_anim/anim.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/monst_anim/particles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/monst_anim/sample.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/inimigos/rato_gray_2.png" type="Texture" id=9]
+[ext_resource path="res://sprites/inimigos/rato_gray.png" type="Texture" id=10]
+[ext_resource path="res://sprites/inimigos/spider.png" type="Texture" id=11]
+[ext_resource path="res://sprites/inimigos/spider3.png" type="Texture" id=12]
+[ext_resource path="res://sprites/inimigos/spider2.png" type="Texture" id=13]
+[ext_resource path="res://sprites/inimigos/goop_0.png" type="Texture" id=14]
+[ext_resource path="res://sprites/inimigos/goop_1.png" type="Texture" id=15]
+[ext_resource path="res://sprites/inimigos/goop_4.png" type="Texture" id=16]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 20.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="fabrica_de_monstros" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="rato_c" type="Area2D" parent="."]
+
+transform/pos = Vector2( 60.7376, 44.4529 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.51899, 0, 0, 1.39982, -0.0699114, -1.4511 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+vida = 2
+pontos = 10
+
+[node name="sprite" type="AnimatedSprite" parent="rato_c"]
+
+frames = SubResource( 2 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="resto" type="Sprite" parent="rato_c"]
+
+visibility/visible = false
+z/z = -3
+z/relative = false
+texture = ExtResource( 5 )
+
+[node name="poly" type="CollisionShape2D" parent="rato_c"]
+
+transform/pos = Vector2( -0.0699114, -1.4511 )
+transform/scale = Vector2( 1.51899, 1.39982 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="anim" parent="rato_c" instance=ExtResource( 6 )]
+
+[node name="particles" parent="rato_c" instance=ExtResource( 7 )]
+
+[node name="sample" parent="rato_c" instance=ExtResource( 8 )]
+
+[node name="Timer" type="Timer" parent="rato_c"]
+
+process_mode = 1
+wait_time = 12.0
+one_shot = false
+autostart = false
+
+[node name="part_over" type="Timer" parent="rato_c"]
+
+process_mode = 1
+wait_time = 0.8
+one_shot = false
+autostart = false
+
+[node name="rato_b" type="Area2D" parent="."]
+
+transform/pos = Vector2( 268.776, 42.8318 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.51899, 0, 0, 1.39982, -0.0699114, -1.4511 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+vida = 2
+pontos = 15
+
+[node name="sprite" type="AnimatedSprite" parent="rato_b"]
+
+frames = SubResource( 3 )
+animation = "default"
+playing = true
+
+[node name="resto" type="Sprite" parent="rato_b"]
+
+visibility/visible = false
+z/z = -3
+z/relative = false
+texture = ExtResource( 5 )
+
+[node name="poly" type="CollisionShape2D" parent="rato_b"]
+
+transform/pos = Vector2( -0.0699114, -1.4511 )
+transform/scale = Vector2( 1.51899, 1.39982 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="anim" parent="rato_b" instance=ExtResource( 6 )]
+
+[node name="particles" parent="rato_b" instance=ExtResource( 7 )]
+
+[node name="sample" parent="rato_b" instance=ExtResource( 8 )]
+
+[node name="Timer" type="Timer" parent="rato_b"]
+
+process_mode = 1
+wait_time = 12.0
+one_shot = false
+autostart = false
+
+[node name="part_over" type="Timer" parent="rato_b"]
+
+process_mode = 1
+wait_time = 0.8
+one_shot = false
+autostart = false
+
+[node name="aranha" type="Area2D" parent="."]
+
+transform/pos = Vector2( 167.248, 38.2911 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 0.0045505, -1.74632, 1.54428, 0.00402403, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+vida = 2
+pontos = 15
+
+[node name="sprite" type="AnimatedSprite" parent="aranha"]
+
+frames = SubResource( 5 )
+animation = "default"
+playing = true
+
+[node name="resto" type="Sprite" parent="aranha"]
+
+visibility/visible = false
+transform/pos = Vector2( 1.45905, 0.730293 )
+z/z = -3
+z/relative = false
+texture = ExtResource( 5 )
+
+[node name="poly" type="CollisionShape2D" parent="aranha"]
+
+transform/rot = 89.8507
+transform/scale = Vector2( 1.74633, 1.54429 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="anim" parent="aranha" instance=ExtResource( 6 )]
+
+[node name="particles" parent="aranha" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 0.482094, 0.547722 )
+
+[node name="sample" parent="aranha" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 0.482094, 0.547714 )
+
+[node name="Timer" type="Timer" parent="aranha"]
+
+process_mode = 1
+wait_time = 12.0
+one_shot = false
+autostart = false
+
+[node name="part_over" type="Timer" parent="aranha"]
+
+process_mode = 1
+wait_time = 0.8
+one_shot = false
+autostart = false
+
+[node name="goop" type="Area2D" parent="."]
+
+transform/pos = Vector2( 355.979, 40.2418 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 0.00453142, -1.739, 1.26158, 0.00328737, -0.115035, -0.0954794 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+vida = 2
+pontos = 20
+
+[node name="sprite" type="AnimatedSprite" parent="goop"]
+
+transform/scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 4 )
+animation = "default"
+frame = 2
+playing = true
+
+[node name="resto" type="Sprite" parent="goop"]
+
+visibility/visible = false
+transform/pos = Vector2( -0.924225, 0.730293 )
+z/z = -3
+z/relative = false
+texture = ExtResource( 5 )
+
+[node name="poly" type="CollisionShape2D" parent="goop"]
+
+transform/pos = Vector2( -0.115035, -0.0954794 )
+transform/rot = 89.8507
+transform/scale = Vector2( 1.73901, 1.26158 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="anim" parent="goop" instance=ExtResource( 6 )]
+
+[node name="particles" parent="goop" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 0.084877, -0.643913 )
+
+[node name="sample" parent="goop" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 0.084877, -0.643921 )
+
+[node name="Timer" type="Timer" parent="goop"]
+
+process_mode = 1
+wait_time = 12.0
+one_shot = false
+autostart = false
+
+[node name="part_over" type="Timer" parent="goop"]
+
+process_mode = 1
+wait_time = 0.8
+one_shot = false
+autostart = false
+
+[connection signal="area_enter" from="rato_c" to="rato_c" method="_on_monstro_area_enter"]
+
+[connection signal="timeout" from="rato_c/Timer" to="rato_c" method="queue_free"]
+
+[connection signal="timeout" from="rato_c/part_over" to="rato_c/particles" method="queue_free"]
+
+[connection signal="timeout" from="rato_c/part_over" to="rato_c/resto" method="show"]
+
+[connection signal="timeout" from="rato_b/Timer" to="rato_b" method="queue_free"]
+
+[connection signal="timeout" from="rato_b/part_over" to="rato_b/particles" method="queue_free"]
+
+[connection signal="timeout" from="rato_b/part_over" to="rato_b/resto" method="show"]
+
+[connection signal="timeout" from="aranha/Timer" to="aranha" method="queue_free"]
+
+[connection signal="timeout" from="aranha/part_over" to="aranha/particles" method="queue_free"]
+
+[connection signal="timeout" from="aranha/part_over" to="aranha/resto" method="show"]
+
+[connection signal="timeout" from="goop/Timer" to="goop" method="queue_free"]
+
+[connection signal="timeout" from="goop/part_over" to="goop/particles" method="queue_free"]
+
+[connection signal="timeout" from="goop/part_over" to="goop/resto" method="show"]
+
+

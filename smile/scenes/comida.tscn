@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://sprites/bread.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+resource/name = "pao"
+script/source = "extends Node2D
+
+func geraComidaRand():		#Faz com que monstros novos add entrem automaticamente
+	return get_children()[randi() % get_children().size()].duplicate()"
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 20.0
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Area2D
+
+var vel = 100
+
+func _ready():
+	add_to_group(game.COMIDA)
+	set_process(true)
+	
+func _process(delta):
+	set_pos(get_pos() + Vector2(0, 0.44) * vel * delta)"
+
+[node name="pao" type="Node2D"]
+
+script/script = SubResource( 1 )
+
+[node name="pao" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1.67881, 0, 0, 0.5, -0.448786, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = SubResource( 2 )
+
+[node name="pao" type="Sprite" parent="pao"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pao"]
+
+transform/pos = Vector2( -0.448786, 0 )
+transform/scale = Vector2( 1.67881, 0.5 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+

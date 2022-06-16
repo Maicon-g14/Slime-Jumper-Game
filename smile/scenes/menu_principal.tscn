@@ -1,0 +1,268 @@
+[gd_scene load_steps=18 format=1]
+
+[ext_resource path="res://scripts/menu_principal.gd" type="Script" id=1]
+[ext_resource path="res://sprites/menu/mian.png" type="Texture" id=2]
+[ext_resource path="res://sprites/menu/0_slaine.png" type="Texture" id=3]
+[ext_resource path="res://sprites/menu/1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/menu/2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/menu/3.png" type="Texture" id=6]
+[ext_resource path="res://sprites/menu/4.png" type="Texture" id=7]
+[ext_resource path="res://sprites/menu/mian_sol2.png" type="Texture" id=8]
+[ext_resource path="res://sprites/menu/mian_sol.png" type="Texture" id=9]
+[ext_resource path="res://sprites/menu/mian_fl.png" type="Texture" id=10]
+[ext_resource path="res://sprites/menu/mian_fl2.png" type="Texture" id=11]
+[ext_resource path="res://sprites/menu/btn.png" type="Texture" id=12]
+[ext_resource path="res://sprites/menu/btn_out.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.5
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.5
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "fade"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("olha_esses_raios_de-luz:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 1.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("flors:visibility/opacity")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 1.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MenuButton:visibility/opacity")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 1.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:visibility/opacity")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0, 1.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("comecar:visibility/opacity")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0, 1.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("slaine:visibility/opacity")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 1.5, 2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/imported = false
+tracks/7/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+} ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+centered = false
+
+[node name="slaine" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 320, 248 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 5
+playing = true
+
+[node name="olha_esses_raios_de-luz" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 320, 240 )
+frames = SubResource( 2 )
+animation = "default"
+playing = true
+
+[node name="flors" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 320, 240 )
+frames = SubResource( 3 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="comecar" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 310.0
+margin/top = 350.0
+margin/right = 350.0
+margin/bottom = 392.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 12 )
+textures/pressed = ExtResource( 13 )
+textures/hover = ExtResource( 13 )
+textures/disabled = ExtResource( 12 )
+textures/focused = ExtResource( 12 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="MenuButton" type="MenuButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 290.0
+margin/top = 460.0
+margin/right = 355.0
+margin/bottom = 480.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 0
+shortcut = null
+text = "Créditos"
+flat = true
+align = 0
+items = [  ]
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+text = "v 0.01 Beta"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="fade_out" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/fade = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="score" type="Label" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 275.0
+margin/top = 94.0
+margin/right = 367.0
+margin/bottom = 108.0
+text = "Sua pontuação:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="pontos" type="Label" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 280.0
+margin/top = 111.0
+margin/right = 367.0
+margin/bottom = 125.0
+text = "0"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="comecar" to="." method="_on_comecar_pressed"]
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+
+

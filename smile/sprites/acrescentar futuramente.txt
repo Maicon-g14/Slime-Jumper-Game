@@ -1,0 +1,24 @@
+https://opengameart.org/content/two-pixelish-tree-sprites - creditos arvore no menu(nao obrigatorio mas colocar)
+
+sistema de ranking por score
+dar queue_free() na comida (esqueci)
+deixar cenario mais amigavel
+remodelar pedras do chao
+acrescentar eventos de obstaculos
+	monstros que saem e atiram da agua
+	monstros que atiram
+	maior diversidade de monstros
+ataque a distancia para o player(com gauge estilo atb)
+redimensionar screen para porte adequando em smartphones
+modo 2players no pc
+incorporar adsense(bem futuramente)
+começar a contar historia de slaine(busca por carisca...hmm(poderia ser o nome de uma slime?), carisma com jogadores)
+acrescentar bau com chave no fim do esgoto
+sistema de boss
+rever controles e organização na tela
+refazer menu principal(bem futuro esse)
+acrescentar possibilidade de reiniciar e botao adequado de mute
+acrescentar sons
+revisar e digitalizar sons e ritmos que ja tenho criado
+
+otimizar para tornar jogo leve

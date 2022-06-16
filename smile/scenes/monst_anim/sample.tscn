@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://sounds/flyswatter2.wav" type="Sample" id=1]
+[ext_resource path="res://sounds/flyswatter3.wav" type="Sample" id=2]
+[ext_resource path="res://sounds/flyswatter4.wav" type="Sample" id=3]
+
+[sub_resource type="SampleLibrary" id=4]
+
+samples/0 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 1 )
+}
+samples/1 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 2 )
+}
+samples/2 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+
+[node name="sample" type="SamplePlayer2D"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 4 )
+config/pitch_random = 0.0
+
+
